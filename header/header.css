@@ -1,0 +1,78 @@
+/* ============================================================
+   MODUL: HEADER CSS
+   Připoj do <head>: <link rel="stylesheet" href="MODULY/header/header.css">
+   ============================================================ */
+
+/* Základní reset pro header */
+header {
+    height: 70px;
+    width: 100%;
+    background-color: #1a1a2e;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+/* Wrapper – omezuje šířku obsahu */
+header .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 36px;
+}
+
+/* Logo */
+header .wrapper-logo {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+header .wrapper-logo .logo-text {
+    font-size: 22px;
+    font-weight: 700;
+    color: #e94560;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 1px;
+}
+
+/* Navigace – desktop */
+header .nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+header .nav .nav-link {
+    text-decoration: none;
+    color: #ccc;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding-bottom: 3px;
+    border-bottom: 2px solid transparent;
+}
+
+header .nav .nav-link:hover,
+header .nav .nav-link.active {
+    color: #e94560;
+    border-bottom-color: #e94560;
+}
+
+/* Kompenzace fixed headeru – přidej tuto třídu na <main> nebo první sekci */
+.header-offset {
+    padding-top: 70px;
+}
+
+/* Responzivita – skryje nav na mobilu (použij mobilni-header modul!) */
+@media (max-width: 768px) {
+    header .nav {
+        display: none;
+    }
+}

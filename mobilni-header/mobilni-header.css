@@ -1,0 +1,150 @@
+/* ============================================================
+   MODUL: MOBILNÍ HEADER CSS (hamburger menu)
+   Připoj do <head>: <link rel="stylesheet" href="MODULY/mobilni-header/mobilni-header.css">
+   ============================================================ */
+
+/* ---- Základní header ---- */
+header {
+    height: 70px;
+    width: 100%;
+    background-color: #1a1a2e;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+header .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 36px;
+    position: relative;
+}
+
+/* ---- Logo ---- */
+header .wrapper-logo {
+    text-decoration: none;
+    z-index: 200;
+}
+
+header .wrapper-logo .logo-text {
+    font-size: 22px;
+    font-weight: 700;
+    color: #e94560;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 1px;
+}
+
+/* ---- Hamburger tlačítko ---- */
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 200;
+}
+
+.hamburger .stick {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+/* Animace hamburgeru → křížek */
+.hamburger.active .stick:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger.active .stick:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.hamburger.active .stick:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* ---- Navigace (MOBILNÍ – výchozí stav) ---- */
+nav {
+    position: fixed;
+    top: 70px;           /* hned pod headerem */
+    right: -100%;        /* skrytá vpravo */
+    width: 100%;
+    height: calc(100vh - 70px);
+    background-color: #16213e;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 36px;
+    transition: right 0.4s ease;
+    z-index: 100;
+}
+
+/* Navigace otevřená */
+nav.active {
+    right: 0;
+}
+
+nav .nav-link {
+    text-decoration: none;
+    color: #ccc;
+    font-size: 24px;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: color 0.3s ease;
+}
+
+nav .nav-link:hover,
+nav .nav-link.active {
+    color: #e94560;
+}
+
+/* Kompenzace fixed headeru */
+main {
+    padding-top: 70px;
+}
+
+/* ---- DESKTOP: navigace vodorovně ---- */
+@media (min-width: 768px) {
+    .hamburger {
+        display: none;
+    }
+
+    nav {
+        position: static;
+        width: auto;
+        height: 100%;
+        flex-direction: row;
+        background: none;
+        gap: 32px;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    nav .nav-link {
+        font-size: 16px;
+        font-weight: 500;
+        padding-bottom: 3px;
+        border-bottom: 2px solid transparent;
+    }
+
+    nav .nav-link:hover,
+    nav .nav-link.active {
+        border-bottom-color: #e94560;
+    }
+}

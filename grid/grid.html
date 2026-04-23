@@ -1,0 +1,84 @@
+<!-- ============================================================
+     MODUL: GRID ROZLOŽENÍ
+     Varianty: .grid-2x2, .grid-3x3, .grid-3col (3 sloupce, libovolný počet řádků)
+     Použití: zkopíruj požadovaný blok do stránky
+     Připoj:  <link rel="stylesheet" href="MODULY/grid/grid.css">
+     ============================================================ -->
+
+
+<!-- ==================== VARIANTA 1: 2×2 grid ==================== -->
+<section class="grid-section">
+    <div class="wrapper">
+        <h2 class="section-title">2×2 Grid</h2>
+        <div class="grid grid-2x2">
+            <div class="grid-card">
+                <h3>Položka 1</h3>
+                <p>Popis první položky v gridu.</p>
+            </div>
+            <div class="grid-card">
+                <h3>Položka 2</h3>
+                <p>Popis druhé položky v gridu.</p>
+            </div>
+            <div class="grid-card">
+                <h3>Položka 3</h3>
+                <p>Popis třetí položky v gridu.</p>
+            </div>
+            <div class="grid-card">
+                <h3>Položka 4</h3>
+                <p>Popis čtvrté položky v gridu.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ==================== VARIANTA 2: 3×3 grid ==================== -->
+<section class="grid-section">
+    <div class="wrapper">
+        <h2 class="section-title">3×3 Grid</h2>
+        <div class="grid grid-3x3">
+            <div class="grid-card"><h3>Položka 1</h3><p>Popis.</p></div>
+            <div class="grid-card"><h3>Položka 2</h3><p>Popis.</p></div>
+            <div class="grid-card"><h3>Položka 3</h3><p>Popis.</p></div>
+            <div class="grid-card"><h3>Položka 4</h3><p>Popis.</p></div>
+            <div class="grid-card"><h3>Položka 5</h3><p>Popis.</p></div>
+            <div class="grid-card"><h3>Položka 6</h3><p>Popis.</p></div>
+            <div class="grid-card"><h3>Položka 7</h3><p>Popis.</p></div>
+            <div class="grid-card"><h3>Položka 8</h3><p>Popis.</p></div>
+            <div class="grid-card"><h3>Položka 9</h3><p>Popis.</p></div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ==================== VARIANTA 3: 3 sloupce, libovolný počet řádků ==================== -->
+<!-- Toto se hodí pro výpis z DB (<?php while(...) { echo "<div>...</div>"; } ?>) -->
+<section class="grid-section">
+    <div class="wrapper">
+        <h2 class="section-title">3 sloupce (výpis z DB)</h2>
+        <div class="grid grid-3col">
+            <!-- Přidávej sem <div class="grid-card"> pro každý záznam z DB -->
+            <div class="grid-card">
+                <h3>Záznam 1</h3>
+                <p>Text z databáze.</p>
+            </div>
+            <div class="grid-card">
+                <h3>Záznam 2</h3>
+                <p>Text z databáze.</p>
+            </div>
+            <div class="grid-card">
+                <h3>Záznam 3</h3>
+                <p>Text z databáze.</p>
+            </div>
+            <div class="grid-card">
+                <h3>Záznam 4</h3>
+                <p>Text z databáze.</p>
+            </div>
+            <div class="grid-card">
+                <h3>Záznam 5</h3>
+                <p>Text z databáze.</p>
+            </div>
+            <!-- Přidej libovolně dalších div.grid-card -->
+        </div>
+    </div>
+</section>

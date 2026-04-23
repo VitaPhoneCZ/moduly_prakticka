@@ -1,0 +1,89 @@
+/* ============================================================
+   MODUL: VÝPIS Z DATABÁZE CSS
+   Připoj do <head>: <link rel="stylesheet" href="MODULY/db-vypis/db-vypis.css">
+   ============================================================ */
+
+.db-vypis-sekce {
+    padding: 60px 0;
+    background-color: #f4f4f8;
+}
+
+.db-vypis-sekce .wrapper {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 36px;
+}
+
+/* Grid s kartami */
+.db-vypis {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Karta záznamu */
+.db-karta {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    word-break: break-word;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.db-karta h3 {
+    font-size: 18px;
+    color: #1a1a2e;
+    margin: 0;
+}
+
+.db-email {
+    font-size: 13px;
+    color: #888;
+    margin: 0;
+}
+
+.db-hvezdy {
+    font-size: 16px;
+    margin: 0;
+}
+
+.db-popis {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Prázdný stav */
+.db-prazdno {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 16px;
+    color: #888;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 40px;
+}
+
+/* Responzivita */
+@media (max-width: 900px) {
+    .db-vypis {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .db-vypis {
+        grid-template-columns: 1fr;
+    }
+
+    .db-vypis-sekce .wrapper {
+        padding: 0 16px;
+    }
+}

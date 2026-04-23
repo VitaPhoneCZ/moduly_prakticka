@@ -1,0 +1,30 @@
+<!-- ============================================================
+     MODUL: SLIDESHOW (obrázky – automatická + ruční)
+     Použití: zkopíruj <div class="slideshow">...</div> do stránky
+     Připoj:  <link rel="stylesheet" href="MODULY/obrazky/slideshow.css">
+              <script src="MODULY/obrazky/slideshow.js" defer></script>
+     POZOR:   Uprav src obrázků na reálné cesty
+     ============================================================ -->
+
+<div class="slideshow" id="slideshow">
+    <!-- Slides – přidej nebo odeber <div class="slide"> -->
+    <div class="slide active">
+        <img src="img/slide1.jpg" alt="Slide 1">
+        <div class="slide-caption">Popis prvního obrázku</div>
+    </div>
+    <div class="slide">
+        <img src="img/slide2.jpg" alt="Slide 2">
+        <div class="slide-caption">Popis druhého obrázku</div>
+    </div>
+    <div class="slide">
+        <img src="img/slide3.jpg" alt="Slide 3">
+        <div class="slide-caption">Popis třetího obrázku</div>
+    </div>
+
+    <!-- Navigační šipky -->
+    <button class="slide-btn prev" id="slidePrev">&#10094;</button>
+    <button class="slide-btn next" id="slideNext">&#10095;</button>
+
+    <!-- Tečky (dots) -->
+    <div class="slide-dots" id="slideDots"></div>
+</div>

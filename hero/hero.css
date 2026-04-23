@@ -1,0 +1,113 @@
+/* ============================================================
+   MODUL: HERO SEKCE CSS
+   Připoj do <head>: <link rel="stylesheet" href="MODULY/hero/hero.css">
+   Poznámka: Předpokládá 70px fixed header (třída .header-offset na <main>)
+   ============================================================ */
+
+/* Kompenzace fixed headeru */
+main {
+    padding-top: 70px;
+}
+
+/* Hero sekce */
+.hero {
+    min-height: 100vh;
+    width: 100%;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    display: flex;
+    align-items: center;
+}
+
+.hero .wrapper {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 36px;
+    width: 100%;
+}
+
+.hero-content {
+    max-width: 650px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.hero-title {
+    font-size: 56px;
+    font-weight: 700;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    line-height: 1.15;
+}
+
+.hero-title span {
+    color: #e94560; /* Zvýraznění části nadpisu – použití: <span>slovo</span> */
+}
+
+.hero-subtitle {
+    font-size: 18px;
+    color: #aaa;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* Tlačítka v hero */
+.hero-buttons {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+/* Globální tlačítka (sdílí s btn modulem) */
+.btn {
+    padding: 13px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-primary {
+    background-color: #e94560;
+    color: #fff;
+    border-color: #e94560;
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: #e94560;
+}
+
+.btn-ghost {
+    background-color: transparent;
+    color: #fff;
+    border-color: #fff;
+}
+
+.btn-ghost:hover {
+    background-color: #fff;
+    color: #1a1a2e;
+}
+
+/* Responzivita */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 36px;
+    }
+
+    .hero-subtitle {
+        font-size: 16px;
+    }
+
+    .hero .wrapper {
+        padding: 0 20px;
+    }
+}

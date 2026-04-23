@@ -1,0 +1,84 @@
+<!-- ============================================================
+     MODUL: FORMULÁŘ S DB (PHP verze s prepared statements)
+     Použití: zkopíruj celý blok do svého index.php
+     Připoj:  <link rel="stylesheet" href="MODULY/formular/formular.css">
+              include 'MODULY/formular/db.php';   (v PHP hlavičce)
+     POZOR:   Upraveš jméno tabulky, políček a DB připojení v db.php
+     ============================================================ -->
+
+<!-- PHP logika patří NA ZAČÁTEK souboru (před <!DOCTYPE html>) -->
+<!-- Viz: MODULY/formular/formular-logika.php -->
+
+<!-- HTML formulář -->
+<div class="formular-container">
+    <!-- Zpětná vazba (success / error ze SESSION) -->
+    <div class="formular-feedback">
+        <?php
+        if (isset($_SESSION['error'])) {
+            echo '<p class="feedback-error">' . $_SESSION['error'] . '</p>';
+            unset($_SESSION['error']);
+        }
+        if (isset($_SESSION['success'])) {
+            echo '<p class="feedback-success">' . $_SESSION['success'] . '</p>';
+            unset($_SESSION['success']);
+        }
+        ?>
+    </div>
+
+    <h2>Přidat záznam</h2>
+
+    <form action="index.php" method="POST" class="formular">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="jmeno">Jméno *</label>
+                <input type="text" name="jmeno" id="jmeno" placeholder="Jan Novák" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" name="email" id="email" placeholder="jan@email.cz" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="predmet">Předmět *</label>
+            <input type="text" name="predmet" id="predmet" placeholder="Název předmětu" required>
+        </div>
+
+        <!-- Hodnocení radio buttony -->
+        <div class="form-group">
+            <p class="form-label">Hodnocení ⭐</p>
+            <div class="radio-group">
+                <input type="radio" name="hodnoceni" id="h1" value="1">
+                <label for="h1">1</label>
+                <input type="radio" name="hodnoceni" id="h2" value="2">
+                <label for="h2">2</label>
+                <input type="radio" name="hodnoceni" id="h3" value="3">
+                <label for="h3">3</label>
+                <input type="radio" name="hodnoceni" id="h4" value="4">
+                <label for="h4">4</label>
+                <input type="radio" name="hodnoceni" id="h5" value="5">
+                <label for="h5">5</label>
+            </div>
+        </div>
+
+        <!-- Select (rozevírací nabídka) -->
+        <div class="form-group">
+            <label for="kategorie">Kategorie</label>
+            <select name="kategorie" id="kategorie">
+                <option value="A">Kategorie A</option>
+                <option value="B">Kategorie B</option>
+                <option value="C">Kategorie C</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="popis">Popis / Zpráva *</label>
+            <textarea name="popis" id="popis" rows="5" placeholder="Sem napište zprávu..." required></textarea>
+        </div>
+
+        <div class="form-buttons">
+            <input type="submit" value="Odeslat" class="btn-submit">
+            <input type="reset" value="Vymazat" class="btn-reset">
+        </div>
+    </form>
+</div>

@@ -1,0 +1,103 @@
+/* ============================================================
+   MODUL: SLIDESHOW CSS
+   Připoj do <head>: <link rel="stylesheet" href="MODULY/obrazky/slideshow.css">
+   ============================================================ */
+
+/* ---- Slideshow obal ---- */
+.slideshow {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 40px auto;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    background-color: #000;
+}
+
+/* ---- Každý slide ---- */
+.slide {
+    display: none;           /* Schovaný */
+    position: relative;
+}
+
+.slide.active {
+    display: block;          /* Aktivní slide je viditelný */
+}
+
+.slide img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;       /* Obrázek vyplní prostor, nepřetéká */
+    display: block;
+    transition: opacity 0.5s ease;
+}
+
+/* ---- Popisek ---- */
+.slide-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    padding: 20px 20px 14px;
+}
+
+/* ---- Navigační šipky ---- */
+.slide-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.45);
+    color: #fff;
+    border: none;
+    padding: 14px 18px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+    z-index: 10;
+}
+
+.slide-btn:hover {
+    background-color: rgba(233, 69, 96, 0.8);
+}
+
+.slide-btn.prev { left: 12px; }
+.slide-btn.next { right: 12px; }
+
+/* ---- Tečky (dots) ---- */
+.slide-dots {
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    transition: background-color 0.3s;
+}
+
+.dot.active {
+    background-color: #e94560;
+}
+
+/* Responzivita */
+@media (max-width: 600px) {
+    .slide img {
+        height: 220px;
+    }
+}

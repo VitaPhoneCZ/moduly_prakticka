@@ -1,0 +1,95 @@
+/* ============================================================
+   MODUL: GRID ROZLOŽENÍ CSS
+   Připoj do <head>: <link rel="stylesheet" href="MODULY/grid/grid.css">
+   Třídy: .grid-2x2 | .grid-3x3 | .grid-3col
+   ============================================================ */
+
+/* Sekce s gridem */
+.grid-section {
+    padding: 60px 0;
+    background-color: #f4f4f8;
+}
+
+.grid-section .wrapper {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 36px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 28px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #1a1a2e;
+    margin-bottom: 36px;
+}
+
+/* ---- Základní grid kontejner ---- */
+.grid {
+    display: grid;
+    gap: 20px;
+}
+
+/* ---- VARIANTA 1: 2×2 (přesně 2 sloupce × 2 řádky) ---- */
+.grid-2x2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* ---- VARIANTA 2: 3×3 (přesně 3 sloupce × 3 řádky) ---- */
+.grid-3x3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* ---- VARIANTA 3: 3 sloupce, libovolný počet řádků ---- */
+.grid-3col {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* ---- Karta v gridu ---- */
+.grid-card {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    word-break: break-word;
+}
+
+.grid-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.grid-card h3 {
+    font-size: 18px;
+    color: #1a1a2e;
+    margin: 0 0 10px;
+}
+
+.grid-card p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ---- Responzivita ---- */
+
+/* Na tabletech 2 sloupce */
+@media (max-width: 900px) {
+    .grid-3x3,
+    .grid-3col {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Na mobilech 1 sloupec */
+@media (max-width: 600px) {
+    .grid-2x2,
+    .grid-3x3,
+    .grid-3col {
+        grid-template-columns: 1fr;
+    }
+}

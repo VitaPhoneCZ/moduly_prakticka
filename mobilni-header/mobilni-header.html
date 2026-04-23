@@ -1,0 +1,30 @@
+<!-- ============================================================
+     MODUL: MOBILNÍ HEADER S HAMBURGEREM
+     Použití: NAHRAZUJE klasický header modul (má oboje – desktop + mobil)
+     Připoj:  <link rel="stylesheet" href="MODULY/mobilni-header/mobilni-header.css">
+              <script src="MODULY/mobilni-header/mobilni-header.js" defer></script>
+     ============================================================ -->
+
+<header>
+    <div class="wrapper">
+        <!-- Logo -->
+        <a href="/" class="wrapper-logo">
+            <span class="logo-text">MůjWeb</span>
+        </a>
+
+        <!-- Hamburger tlačítko (viditelné jen na mobilu) -->
+        <button class="hamburger" id="hamburgerBtn" aria-label="Otevřít menu">
+            <span class="stick"></span>
+            <span class="stick"></span>
+            <span class="stick"></span>
+        </button>
+
+        <!-- Navigace (na desktopu vodorovně, na mobilu vysouvací) -->
+        <nav id="mainNav">
+            <a href="index.php" class="nav-link active">Úvod</a>
+            <a href="sluzby.php" class="nav-link">Služby</a>
+            <a href="galerie.php" class="nav-link">Galerie</a>
+            <a href="kontakt.php" class="nav-link">Kontakt</a>
+        </nav>
+    </div>
+</header>
