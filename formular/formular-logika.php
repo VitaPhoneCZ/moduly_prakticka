@@ -12,12 +12,12 @@ include 'db.php'; // nebo 'MODULY/formular/db.php'
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['jmeno'])) {
 
     // 1) Sanitace vstupů (ochrana proti XSS)
-    $jmeno     = trim(htmlspecialchars($_POST['jmeno']));
-    $email     = trim(htmlspecialchars($_POST['email']));
-    $predmet   = trim(htmlspecialchars($_POST['predmet']));
-    $hodnoceni = isset($_POST['hodnoceni']) ? (int)$_POST['hodnoceni'] : 0;
+    $jmeno = trim(htmlspecialchars($_POST['jmeno']));
+    $email = trim(htmlspecialchars($_POST['email']));
+    $predmet = trim(htmlspecialchars($_POST['predmet']));
+    $hodnoceni = isset($_POST['hodnoceni']) ? (int) $_POST['hodnoceni'] : 0;
     $kategorie = trim(htmlspecialchars($_POST['kategorie']));
-    $popis     = trim(htmlspecialchars($_POST['popis']));
+    $popis = trim(htmlspecialchars($_POST['popis']));
 
     // 2) Server-side validace (povinná pole)
     if (empty($jmeno) || empty($email) || empty($predmet) || empty($hodnoceni) || empty($popis)) {

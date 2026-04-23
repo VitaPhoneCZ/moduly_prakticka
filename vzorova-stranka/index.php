@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['jmeno'])) {
         $stmt = $spojeni->prepare(
             "INSERT INTO zaznamy (jmeno, email, predmet, hodnoceni, kategorie, popis) VALUES (?, ?, ?, ?, ?, ?)"
         );
-        $stmt->bind_param("ssisis", $jmeno, $email, $predmet, $hodnoceni, $kategorie, $popis);
+        $stmt->bind_param("sssiss", $jmeno, $email, $predmet, $hodnoceni, $kategorie, $popis);
         if ($stmt->execute()) {
             $_SESSION['success'] = "Záznam byl úspěšně uložen!";
         } else {
