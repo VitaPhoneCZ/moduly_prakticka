@@ -111,13 +111,13 @@ Otevři příslušný `.html` soubor modulu a zkopíruj obsah do svého souboru.
 | **base** | CSS reset + utility třídy + CSS proměnné | `base.css` |
 | **header** | Header s hamburger menu (desktop + mobil) | HTML + CSS + JS |
 | **footer** | Footer se třemi sloupci | HTML + CSS |
-| **hero** | Úvodní sekce – gradient nebo foto na pozadí | HTML + CSS |
-| **formular** | Složitější formulář → DB (hodnocení, kategorie...) | HTML + PHP + CSS + SQL |
+| **hero** | Úvodni sekce – gradient nebo foto na pozadí | HTML + CSS |
+| **formular** | Složitější formulář → DB (hodnocení, kategorie, čas) | HTML + PHP + CSS + SQL |
 | **kontakt/db** | Jednoduchý kontakt → uloží do tabulky `kontakty` | HTML + PHP + CSS + SQL |
 | **kontakt/mail** | Jednoduchý kontakt → odešle emailem | HTML + PHP + CSS |
 | **obrazky** | Slideshow obrázků (šipky + tečky + auto) | HTML + CSS + JS |
 | **grid** | Grid 2×2, 3×3, 3 sloupce | HTML + CSS |
-| **db-vypis** | Výpis z DB v grid kartách | HTML (PHP) + CSS |
+| **db-vypis** | Výpis z DB v grid kartách + paginace + relativní čas | HTML (PHP) + CSS |
 
 ---
 
@@ -176,6 +176,55 @@ include '../../formular/db.php'; // uprav cestu dle umístění souboru
 ?>
 ```
 
+### Sloupec `datum_pridani` – automatický čas záznamu:
+Tabulka `zaznamy` má sloupec `datum_pridani TIMESTAMP DEFAULT CURRENT_TIMESTAMP`
+
+---
+
+## 📄 Paginace a relativní čas (db-vypis)
+
+### Paginace – 9 záznamů na stránku:
+Vzorova stránka má výpis z DB rozdělený na stránky po 9. Stránka se řídí GET parametrem `?stranka=2`. Tlačítka jsou generována PHP automaticky podle počtu záznamů.
+
+> ⚠️ URL musí mít správné pořadí: `?stranka=2#zaznamy` – ne `#zaznamy?stranka=2` (ten prohledač ignoruje).
+
+### Relativní čas (`cas_relativni()`):
+Funkce je definována na začátku `vzorova-stranka/index.php`. Bere `datum_pridani` z DB a vrátí člověku čitelnou hodnotu:
+```
+Právě teď / Před 5 min / Před 2 hodinami / Včera / Před 3 dny / Před 1 měsícem / Před 2 lety
+```
+Zobrazí se vpravo od jména na každé kartě – CSS třída `.db-kas` ve `db-vypis.css`.
+
+---
+
+## 🖼️ Vkládání obrázků
+
+### Foto v sekci "O nás" (`.o-nas-img`):
+```html
+<!-- URL z internetu: -->
+<div class="o-nas-img">
+    <img src="https://example.com/foto.jpg" alt="Popis">
+</div>
+
+<!-- Lokální soubor (ve stejné složce jako index.php): -->
+<div class="o-nas-img">
+    <img src="foto.jpg" alt="Popis">
+</div>
+```
+> `object-fit: cover` je již nastaven v CSS – obrázek zaplni celý box bez deformace.
+
+### Foto v Hero sekci (pozadí):
+```html
+<section class="hero hero--img" id="uvod" style="background-image: url('foto.jpg')">
+```
+
+### Slideshow – doplnění `src`:
+```html
+<img src="https://example.com/foto.jpg" alt="Popis snimku">
+<!-- nebo lokální soubor: -->
+<img src="images/foto1.jpg" alt="Popis snimku">
+```
+
 ---
 
 ## 🏭 Praktické stránky – struktura každé stránky
@@ -185,15 +234,13 @@ Každá stránka v `prakticke-stranky/` obsahuje **8 sekcí**:
 | # | Sekce | Popis |
 |---|-------|-------|
 | 1 | **Header** | Hamburger navigace (Úvod / O nás / Galerie / Služby / Kontakt) |
-| 2 | **Hero** | Nadpis + tlačítka, třída `hero--img` (doplň vlastní `url('foto.jpg')`) |
-| 3 | **O nás** | 2 sloupce – text vlevo, placeholder foto vpravo |
-| 4 | **Galerie** | Slideshow – 3 slidy, prázdné `src=""`, popisný `alt` |
+| 2 | **Hero** | Nadpis + tlačítka, třída `hero--img` – doplň `url('foto.jpg')` |
+| 3 | **O nás** | 2 sloupce – text vlevo, foto vpravo (`.o-nas-img img`) |
+| 4 | **Galerie** | Slideshow – 3 slidy, doplň `src=""` vlastní fotkou |
 | 5 | **Služby** | Grid 3 sloupce s emoji ikonou a popisem |
-| 6 | **CTA Banner** | Barevný pruh s telefonním číslem – placeholder |
+| 6 | **CTA Banner** | Barevný pruh s telefonním číslem – uprav |
 | 7 | **Kontakt** | Formulář (DB verze) – ukládá do tabulky `kontakty` |
-| 8 | **Footer** | Logo, navigace, kontaktní info – placeholder |
-
-> **Obrázky:** všechny `src=""` jsou prázdné – doplň vlastní fotky. `alt` popisuje co by tam mělo být.
+| 8 | **Footer** | Logo, navigace, kontaktní info – uprav |
 
 ---
 

@@ -10,7 +10,12 @@
     <div class="wrapper">
         <h2 class="section-title">Záznamy z databáze</h2>
 
-        <div class="db-vypis">
+        <!-- CAROUSEL MÓD:
+             Pokud chceš carousel, přidej třídu "db-carousel" na .db-vypis a odkomentuj tento wrapper a tlačítka.
+        <div class="db-carousel-wrapper">
+            <button class="db-btn prev" onclick="document.querySelector('.db-carousel').scrollBy({left: -340, behavior: 'smooth'})">&#10094;</button>
+        -->
+        <div class="db-vypis"> <!-- Sem přidej "db-carousel" pokud chceš slider -->
             <?php
             // Výpis z DB – nejnovější první (ORDER BY id DESC)
             $dotaz = "SELECT * FROM zaznamy ORDER BY id DESC";
@@ -40,5 +45,9 @@
             }
             ?>
         </div>
+        <!-- Konec carousel wrapperu:
+            <button class="db-btn next" onclick="document.querySelector('.db-carousel').scrollBy({left: 340, behavior: 'smooth'})">&#10095;</button>
+        </div>
+        -->
     </div>
 </section>

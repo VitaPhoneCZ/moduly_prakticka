@@ -77,16 +77,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['kontakt_jmeno'])) {
         .o-nas-img {
             width: 100%;
             height: 320px;
-            background-color: #e0e0e0;
             border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #888;
-            font-size: 14px;
-            text-align: center;
-            padding: 20px;
-            border: 2px dashed #ccc;
+            overflow: hidden;
+        }
+        .o-nas-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            display: block;
         }
 
         /* ---- CTA Banner ---- */
@@ -180,7 +179,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['kontakt_jmeno'])) {
 
         <!-- ======= HERO ======= -->
         <!-- Varianta s fotkou: přidej třídu hero--img a style="background-image: url('foto.jpg')" -->
-        <section class="hero hero--img" id="uvod" style="background-image: url('')">
+        <section class="hero hero--img" id="uvod" style="background-image: url('https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1190000/page_bg_raw.jpg?t=1777037970')">
             <!-- [FOTO: Exteriér autoservisu nebo pohled na dílnu s automobily] -->
             <div class="wrapper">
                 <div class="hero-content">
@@ -219,8 +218,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['kontakt_jmeno'])) {
                         </p>
                     </div>
                     <div class="o-nas-img">
-                        <!-- [FOTO: Interiér dílny – mechanik při práci na vozidle, profesionální vybavení] -->
-                        📷 Sem vložte fotografii dílny nebo mechanika při práci
+                        <img src="https://fuu-sachsen.international/wp-content/uploads/sites/4/2019/10/71933769_1083444518713610_2708774253691404288_n-1024x768.jpg"
+                             alt="Interiér dílny – mechanik při práci na vozidle">
                     </div>
                 </div>
             </div>
@@ -232,15 +231,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['kontakt_jmeno'])) {
                 <h2 class="section-title">Naše práce</h2>
                 <div class="slideshow" id="slideshow">
                     <div class="slide active">
-                        <img src="" alt="[FOTO: Oprava motoru – demontáž a kontrola motorových dílů]">
+                        <img src="https://www.klavkarr.com/blog/image/service-reset-1-reset-oil-service-light-dacia.webp" alt="[FOTO: Oprava motoru – demontáž a kontrola motorových dílů]">
                         <div class="slide-caption">Opravy motorů a převodovek</div>
                     </div>
                     <div class="slide">
-                        <img src="" alt="[FOTO: Pneuservis – montáž pneumatiky na disk, přezouvání]">
+                        <img src="https://cdn.skoda-storyboard.com/2019/03/skoda-fabia-r5-motorsport-mechanic-1440x1061.jpg" alt="[FOTO: Pneuservis – montáž pneumatiky na disk, přezouvání]">
                         <div class="slide-caption">Pneuservis a výměna kol</div>
                     </div>
                     <div class="slide">
-                        <img src="" alt="[FOTO: Diagnostické zařízení připojené k palubní počítači vozu]">
+                        <img src="https://res.cloudinary.com/dkaezguiw/images/w_448,h_301,dpr_2/f_auto,q_auto/v1729837346/pic-3-4/pic-3-4.jpg?_i=AA" alt="[FOTO: Diagnostické zařízení připojené k palubní počítači vozu]">
                         <div class="slide-caption">Moderní autodiagnostika</div>
                     </div>
                     <button class="slide-btn prev" id="slidePrev">&#10094;</button>

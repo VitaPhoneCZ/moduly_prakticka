@@ -6,6 +6,20 @@
 session_start();
 include '../formular/db.php';
 
+// Pomocná funkce – relativní čas ("Před 2 hodinami", "Včera"...)
+function cas_relativni(string $datum): string {
+    $ted   = new DateTime();
+    $potom = new DateTime($datum);
+    $diff  = $ted->diff($potom);
+    if ($diff->y >= 1) return 'Před ' . $diff->y . ' ' . ($diff->y === 1 ? 'rokem' : ($diff->y < 5 ? 'lety' : 'lety'));
+    if ($diff->m >= 1) return 'Před ' . $diff->m . ' ' . ($diff->m === 1 ? 'měsícem' : ($diff->m < 5 ? 'měsíci' : 'měsíci'));
+    if ($diff->d >= 2) return 'Před ' . $diff->d . ' dny';
+    if ($diff->d === 1) return 'Včera';
+    if ($diff->h >= 1) return 'Před ' . $diff->h . ' ' . ($diff->h === 1 ? 'hodinou' : ($diff->h < 5 ? 'hodinami' : 'hodinami'));
+    if ($diff->i >= 1) return 'Před ' . $diff->i . ' min';
+    return 'Právě teď';
+}
+
 // Zpracování formuláře
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['jmeno'])) {
     $jmeno     = trim(htmlspecialchars($_POST['jmeno']));
@@ -220,14 +234,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['jmeno'])) {
             </div>
         </section>
 
-        <!-- ======= MODUL: VÝPIS Z DB ======= -->
+        <!-- ======= MODUL: VÝPIS Z DB (s pagiací) ======= -->
         <section class="db-vypis-sekce" id="zaznamy">
             <div class="wrapper">
                 <h2 class="section-title">Záznamy z databáze</h2>
+                <?php
+                // ---- Paginace ----
+                $na_stranku = 9;
+                $stranka    = max(1, (int)($_GET['stranka'] ?? 1));
+                $offset     = ($stranka - 1) * $na_stranku;
+
+                // Celkový počet záznamů
+                $celkem_res = $spojeni->query("SELECT COUNT(*) AS pocet FROM zaznamy");
+                $celkem     = (int)$celkem_res->fetch_assoc()['pocet'];
+                $stran_celkem = (int)ceil($celkem / $na_stranku);
+
+                // Záznamy pro aktuální stránku
+                $stmt = $spojeni->prepare(
+                    "SELECT * FROM zaznamy ORDER BY id DESC LIMIT ? OFFSET ?"
+                );
+                $stmt->bind_param("ii", $na_stranku, $offset);
+                $stmt->execute();
+                $vysledek = $stmt->get_result();
+                ?>
+
                 <div class="db-vypis">
                     <?php
-                    $dotaz = "SELECT * FROM zaznamy ORDER BY id DESC";
-                    $vysledek = $spojeni->query($dotaz);
                     if ($vysledek && $vysledek->num_rows > 0) {
                         while ($radek = $vysledek->fetch_assoc()) {
                             $jmeno     = htmlspecialchars($radek['jmeno']);
@@ -235,9 +267,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['jmeno'])) {
                             $predmet   = htmlspecialchars($radek['predmet']);
                             $hodnoceni = (int)$radek['hodnoceni'];
                             $popis     = htmlspecialchars($radek['popis']);
+                            // Relativní čas – pouze pokud sloupec existuje
+                            $cas = isset($radek['datum_pridani'])
+                                ? cas_relativni($radek['datum_pridani'])
+                                : '';
                             echo "
                             <div class='db-karta'>
-                                <h3>{$jmeno}</h3>
+                                <div class='db-karta-header'>
+                                    <h3>{$jmeno}</h3>
+                                    <span class='db-cas'>{$cas}</span>
+                                </div>
                                 <p class='db-email'>{$email}</p>
                                 <p><strong>{$predmet}</strong></p>
                                 <p class='db-hvezdy'>" . str_repeat("⭐", $hodnoceni) . "</p>
@@ -250,6 +289,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['jmeno'])) {
                     }
                     ?>
                 </div>
+
+                <!-- Paginace - tlačítka -->
+                <?php if ($stran_celkem > 1): ?>
+                <div class="db-paginace">
+                    <?php if ($stranka > 1): ?>
+                        <a href="?stranka=<?= $stranka - 1 ?>#zaznamy" class="db-pag-btn">&laquo; Předchozí</a>
+                    <?php endif; ?>
+
+                    <?php for ($i = 1; $i <= $stran_celkem; $i++): ?>
+                        <a href="?stranka=<?= $i ?>#zaznamy"
+                           class="db-pag-btn <?= $i === $stranka ? 'db-pag-aktivni' : '' ?>">
+                            <?= $i ?>
+                        </a>
+                    <?php endfor; ?>
+
+                    <?php if ($stranka < $stran_celkem): ?>
+                        <a href="?stranka=<?= $stranka + 1 ?>#zaznamy" class="db-pag-btn">Další &raquo;</a>
+                    <?php endif; ?>
+
+                    <span class="db-pag-info">Strana <?= $stranka ?> z <?= $stran_celkem ?> (celkem <?= $celkem ?> záznamů)</span>
+                </div>
+                <?php endif; ?>
+
             </div>
         </section>
 
