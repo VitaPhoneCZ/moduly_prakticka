@@ -1,0 +1,178 @@
+/* ============================================================
+   MODUL: KONTAKT CSS (platí pro obě verze – db/ i mail/)
+   Připoj do <head>: <link rel="stylesheet" href="MODULY/kontakt/db/kontakt.css">
+   ============================================================ */
+
+/* ---- Sekce kontaktu ---- */
+.kontakt-sekce {
+    padding: 80px 0;
+    background-color: #f4f4f8;
+}
+
+.kontakt-sekce .wrapper {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 36px;
+    width: 100%;
+}
+
+/* Nadpis sekce */
+.kontakt-sekce .section-title {
+    text-align: center;
+    font-size: 36px;
+    color: #1a1a2e;
+    margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.kontakt-sekce .section-subtitle {
+    text-align: center;
+    color: #888;
+    font-size: 16px;
+    margin-bottom: 48px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ---- Formulář kontejner ---- */
+.kontakt-container {
+    max-width: 640px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 12px;
+    padding: 48px 40px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* ---- Zpětná vazba (success / error) ---- */
+.kontakt-feedback {
+    margin-bottom: 20px;
+}
+
+.kontakt-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+.kontakt-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+/* ---- Formulář ---- */
+.kontakt-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.kontakt-row {
+    display: flex;
+    gap: 20px;
+}
+
+.kontakt-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.kontakt-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1a2e;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.kontakt-group input,
+.kontakt-group textarea {
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333;
+    background-color: #fafafa;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+    resize: vertical;
+}
+
+.kontakt-group input:focus,
+.kontakt-group textarea:focus {
+    border-color: #e94560;
+    box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.12);
+    background-color: #fff;
+}
+
+.kontakt-group textarea {
+    min-height: 130px;
+}
+
+/* ---- Tlačítka ---- */
+.kontakt-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.kontakt-btn-submit {
+    padding: 13px 32px;
+    background-color: #e94560;
+    color: #fff;
+    border: 2px solid #e94560;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.kontakt-btn-submit:hover {
+    background-color: transparent;
+    color: #e94560;
+}
+
+.kontakt-btn-reset {
+    padding: 13px 24px;
+    background-color: transparent;
+    color: #888;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.kontakt-btn-reset:hover {
+    border-color: #aaa;
+    color: #555;
+}
+
+/* ---- Responzivita ---- */
+@media (max-width: 640px) {
+    .kontakt-container {
+        padding: 30px 20px;
+    }
+
+    .kontakt-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .kontakt-sekce .section-title {
+        font-size: 28px;
+    }
+}

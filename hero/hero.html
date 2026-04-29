@@ -1,21 +1,46 @@
 <!-- ============================================================
      MODUL: HERO SEKCE
-     Použití: zkopíruj <section class="hero">...</section> do <main>
-     Připoj:  <link rel="stylesheet" href="MODULY/hero/hero.css">
+     Připoj: <link rel="stylesheet" href="MODULY/hero/hero.css">
+
+     VARIANTA A – barevný gradient (výchozí):
+       <section class="hero">
+
+     VARIANTA B – foto na pozadí (přidej třídu hero--img):
+       <section class="hero hero--img" style="background-image: url('cesta/k/foto.jpg')">
+       Tmavý overlay se přidá automaticky přes CSS ::before pseudoelement.
      ============================================================ -->
 
-<section class="hero">
+<!-- ====== VARIANTA A: gradient (výchozí) ====== -->
+<section class="hero" id="uvod">
     <div class="wrapper">
         <div class="hero-content">
             <h1 class="hero-title">Nadpis stránky</h1>
             <p class="hero-subtitle">
-                Krátký popis, který vysvětluje o čem stránka je. 
+                Krátký popis, který vysvětluje o čem stránka je.
                 Pár vět stačí – jasné, stručné.
             </p>
             <div class="hero-buttons">
-                <a href="#" class="btn btn-primary">Začít</a>
-                <a href="#" class="btn btn-ghost">Více info</a>
+                <a href="#kontakt" class="btn btn-primary">Kontaktujte nás</a>
+                <a href="#sluzby" class="btn btn-ghost">Naše služby</a>
             </div>
         </div>
     </div>
 </section>
+
+<!-- ====== VARIANTA B: foto na pozadí ====== -->
+<!--
+<section class="hero hero--img" id="uvod" style="background-image: url('foto.jpg')">
+    <div class="wrapper">
+        <div class="hero-content">
+            <h1 class="hero-title">Nadpis stránky</h1>
+            <p class="hero-subtitle">
+                Popis pod nadpisem – text bude čitelný díky tmavému overlay.
+            </p>
+            <div class="hero-buttons">
+                <a href="#kontakt" class="btn btn-primary">Kontaktujte nás</a>
+                <a href="#sluzby" class="btn btn-ghost">Naše služby</a>
+            </div>
+        </div>
+    </div>
+</section>
+-->

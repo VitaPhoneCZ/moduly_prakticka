@@ -1,23 +1,47 @@
 /* ============================================================
    MODUL: HERO SEKCE CSS
    Připoj do <head>: <link rel="stylesheet" href="MODULY/hero/hero.css">
-   Poznámka: Předpokládá 70px fixed header (třída .header-offset na <main>)
+   ============================================================
+
+   VARIANTY HERO:
+   A) Barevný gradient (výchozí):   <section class="hero">
+   B) Foto na pozadí:               <section class="hero hero--img" style="background-image: url('foto.jpg')">
    ============================================================ */
 
-/* Kompenzace fixed headeru */
-main {
-    padding-top: 70px;
-}
-
-/* Hero sekce */
+/* ---- Základní hero (varianta A – gradient) ---- */
 .hero {
     min-height: 100vh;
     width: 100%;
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
     display: flex;
     align-items: center;
+    position: relative;
 }
 
+/* ---- Varianta B: foto na pozadí (přidej třídu hero--img) ---- */
+.hero.hero--img {
+    background-color: #1a1a2e;       /* fallback pokud se foto nenačte */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+/* Tmavý overlay přes foto – zajišťuje čitelnost textu */
+.hero.hero--img::before {
+    content: '';
+    position: absolute;
+    inset: 0;                         /* = top:0; right:0; bottom:0; left:0 */
+    background: rgba(0, 0, 0, 0.55); /* upravit průhlednost dle tmavosti fotky */
+    z-index: 0;
+}
+
+/* Obsah musí být nad overlay vrstvou */
+.hero.hero--img .wrapper {
+    position: relative;
+    z-index: 1;
+}
+
+/* ---- Wrapper ---- */
 .hero .wrapper {
     max-width: 1300px;
     margin: 0 auto;
@@ -32,6 +56,7 @@ main {
     gap: 20px;
 }
 
+/* ---- Texty ---- */
 .hero-title {
     font-size: 56px;
     font-weight: 700;
@@ -47,13 +72,13 @@ main {
 
 .hero-subtitle {
     font-size: 18px;
-    color: #aaa;
+    color: #ccc;
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.7;
     margin: 0;
 }
 
-/* Tlačítka v hero */
+/* ---- Tlačítka ---- */
 .hero-buttons {
     display: flex;
     gap: 14px;
@@ -61,7 +86,6 @@ main {
     margin-top: 10px;
 }
 
-/* Globální tlačítka (sdílí s btn modulem) */
 .btn {
     padding: 13px 28px;
     border-radius: 8px;
@@ -80,7 +104,6 @@ main {
     color: #fff;
     border-color: #e94560;
 }
-
 .btn-primary:hover {
     background-color: transparent;
     color: #e94560;
@@ -91,22 +114,19 @@ main {
     color: #fff;
     border-color: #fff;
 }
-
 .btn-ghost:hover {
     background-color: #fff;
     color: #1a1a2e;
 }
 
-/* Responzivita */
+/* ---- Responzivita ---- */
 @media (max-width: 768px) {
     .hero-title {
         font-size: 36px;
     }
-
     .hero-subtitle {
         font-size: 16px;
     }
-
     .hero .wrapper {
         padding: 0 20px;
     }

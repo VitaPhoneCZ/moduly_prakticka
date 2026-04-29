@@ -1,19 +1,27 @@
 <!-- ============================================================
-     MODUL: HEADER (desktopový, s navigací)
+     MODUL: HEADER (desktop + mobilní hamburger v jednom)
      Použití: zkopíruj <header>...</header> do své stránky
      Připoj:  <link rel="stylesheet" href="MODULY/header/header.css">
               <script src="MODULY/header/header.js" defer></script>
+     NAHRAZUJE: starý header/ i mobilni-header/ modul
      ============================================================ -->
 
 <header>
     <div class="wrapper">
-        <!-- Logo / název webu -->
+        <!-- Logo / název webu – uprav text -->
         <a href="/" class="wrapper-logo">
             <span class="logo-text">MůjWeb</span>
         </a>
 
-        <!-- Navigace (desktop) -->
-        <nav class="nav">
+        <!-- Hamburger tlačítko (viditelné jen na mobilu < 768px) -->
+        <button class="hamburger" id="hamburgerBtn" aria-label="Otevřít menu">
+            <span class="stick"></span>
+            <span class="stick"></span>
+            <span class="stick"></span>
+        </button>
+
+        <!-- Navigace (desktop = vodorovně, mobil = vysouvací panel) -->
+        <nav id="mainNav">
             <a href="index.php" class="nav-link active">Úvod</a>
             <a href="sluzby.php" class="nav-link">Služby</a>
             <a href="galerie.php" class="nav-link">Galerie</a>
